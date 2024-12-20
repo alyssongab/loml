@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Momo linda</title>
+  <style>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(45deg, #ffafcc, #a1c4fd);
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .center-content {
+      color: #fff;
+      animation: fadeIn 3s ease-out;
+      display: flex;
+      flex-direction: column; /* Garantir que os itens fiquem um abaixo do outro */
+      align-items: center; /* Alinhar todos os itens ao centro */
+    }
+
+    h1 {
+      font-family: 'Cursive', sans-serif;
+      color: #eb6363;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+      font-size: 3.5rem;
+    }
+
+    /* Estilo para o parágrafo em forma de carta */
+    .letter {
+      display: inline-block;
+      background-color: #fff;
+      border: 2px solid #f3a0c3;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      font-size: 1.2rem;
+      color: #333;
+      margin-top: 20px;
+      font-family: 'Helvetica', sans-serif;
+      transform: scale(1);
+      animation: slideIn 1.5s ease-out forwards;
+      max-width: 600px; /* Limita a largura da carta */
+      width: 100%; /* Faz com que ela ocupe a largura disponível até o limite */
+      text-align: left; /* Deixa o texto alinhado à esquerda dentro da carta */
+    }
+
+    @keyframes slideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .button {
+      background-color: #ff7b7b;
+      border: none;
+      color: white;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      border-radius: 25px;
+      transition: all 0.3s ease;
+      margin-top: 30px;
+    }
+
+    .button:hover {
+      background-color: #ff4d4d;
+      transform: scale(1.1);
+    }
+
+    /* Animação fade in */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    /* Imagens de fotos */
+    .photo-container {
+      display: none;
+      margin-top: 40px;
+      animation: showPhotos 1.5s ease-in-out forwards;
+    }
+
+    .photo-container img {
+      width: 300px;
+      height: 300px;
+      margin: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0;
+      animation: fadeIn 1.5s ease-in-out forwards;
+      object-fit: cover; /* Garante que as imagens não fiquem esticadas */
+    }
+
+    @keyframes showPhotos {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* coracao flutuando */
+    .heart {
+      position: absolute;
+      font-size: 2em;
+      color: #ff69b4;
+      animation: floatHeart 6s infinite;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-30px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .letter {
+        font-size: 1rem;
+        padding: 20px;
+      }
+      .button {
+        font-size: 1rem;
+        padding: 12px 25px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      .letter {
+        font-size: 0.9rem;
+        padding: 15px;
+      }
+      .button {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="center-content">
+    <h1>Feliz aniversário amor da minha vida 🥹</h1>
+    
+    <!-- Adicionando o texto como uma carta -->
+    <div class="letter">
+      <p>Você é meu melhor momento, minha melhor risada, o melhor presente que a vida me deu, e meu coração é seu pra sempre. Te amo infinito, minha momo linda 🥺💝 Aproveita seu diaaa </p>
+    </div>
+    
+    <button class="button" onclick="celebrate()">Aperta pra ver a surpresa</button>
+  </div>
+
+  <!-- Floating Hearts -->
+  <div id="hearts-container"></div>
+
+  <!-- Container das Fotos -->
+  <div class="photo-container" id="photoContainer">
+    <img src="foto1.jpg" alt="Foto 1">
+    <img src="foto2.jpg" alt="Foto 2">
+    <img src="foto3.jpg" alt="Foto 3">
+  </div>
+
+  <script>
+    // Criar Animação de Corações Flutuantes
+    function generateHearts() {
+      const heartContainer = document.getElementById('hearts-container');
+      for (let i = 0; i < 5; i++) {
+        let heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerText = '❤️';
+        heart.style.left = `${Math.random() * window.innerWidth}px`;
+        heart.style.animationDuration = `${Math.random() * 3 + 4}s`;
+        heart.style.animationDelay = `${Math.random() * 2}s`;
+        heartContainer.appendChild(heart);
+      }
+    }
+
+    // Função chamada ao clicar no botão
+    function celebrate() {
+      generateHearts();
+      const button = document.querySelector('.button');
+      button.innerText = "Minha capybara 🥺❤️❤️";
+      button.style.backgroundColor = '#ff9b9b';
+      
+      // Mostrar as fotos com animação
+      const photoContainer = document.getElementById('photoContainer');
+      photoContainer.style.display = 'block';
+      
+      // Adicionar Confete
+      for (let i = 0; i < 30; i++) {
+        let confetti = document.createElement('div');
+        confetti.style.position = 'absolute';
+        confetti.style.top = '50%';
+        confetti.style.left = `${Math.random() * window.innerWidth}px`;
+        confetti.style.width = '10px';
+        confetti.style.height = '10px';
+        confetti.style.backgroundColor = 'gold';
+        confetti.style.borderRadius = '50%';
+        confetti.style.animation = 'confetti 2s infinite';
+        document.body.appendChild(confetti);
+      }
+    }
+  </script>
+</body>
+</html>
